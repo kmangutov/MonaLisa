@@ -43,7 +43,7 @@ public class RankSelectionImplTest {
             frequency.put(keyVal, frequency.containsKey(keyVal)?(frequency.get(keyVal)+1):1);
         }
 
-        assertTrue(frequency.get(1) > frequency.get(2));
+        assertTrue(frequency.get(1) > frequency.get(4));
 
         for(Map.Entry<Integer, Integer> entry : frequency.entrySet()) {
             System.out.println(entry.getKey() + "\t:\t" + entry.getValue());

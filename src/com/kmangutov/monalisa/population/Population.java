@@ -1,5 +1,6 @@
 package com.kmangutov.monalisa.population;
 
+import com.google.common.collect.TreeMultimap;
 import com.kmangutov.monalisa.chromosome.Chromosome;
 import com.kmangutov.monalisa.fitness.FitnessEvaluator;
 import com.kmangutov.monalisa.seed.ChromosomeFactory;
@@ -36,9 +37,9 @@ public class Population extends Vector<Chromosome>
             add(chromosomeFactory.randomChromosome());
     }
 
-    public TreeMap<Float, Chromosome> map(FitnessEvaluator eval) {
+    public TreeMultimap<Float, Chromosome> map(FitnessEvaluator eval) {
 
-        TreeMap<Float, Chromosome> mapping = new TreeMap<Float, Chromosome>();
+        TreeMultimap<Float, Chromosome> mapping = TreeMultimap.create();
 
         for(Chromosome c : this) {
 

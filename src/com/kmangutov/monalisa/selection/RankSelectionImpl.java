@@ -1,5 +1,6 @@
 package com.kmangutov.monalisa.selection;
 
+import com.google.common.collect.TreeMultimap;
 import com.kmangutov.monalisa.chromosome.Chromosome;
 import com.kmangutov.monalisa.fitness.FitnessEvaluator;
 import com.kmangutov.monalisa.population.Population;
@@ -24,12 +25,12 @@ public class RankSelectionImpl extends SelectionStrategy {
 
     public Pair<Chromosome, Chromosome> select(Population population) {
 
-        TreeMap<Float, Chromosome> mapping = population.map(mEvaluator);
+        TreeMultimap<Float, Chromosome> mapping = population.map(mEvaluator);
         Chromosome first = null;
         Chromosome second = null;
         int counter = 0;
 
-        for(Map.Entry<Float, Chromosome> entry : mapping.entrySet()) {
+        for(Map.Entry<Float, Chromosome> entry : mapping.entries()) {
 
             if(mRandom.nextFloat() < selectionChance(counter, population.size()) || counter++ >= mapping.size() -2) {
 
