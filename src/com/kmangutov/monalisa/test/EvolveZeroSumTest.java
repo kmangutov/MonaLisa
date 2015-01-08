@@ -83,7 +83,7 @@ public class EvolveZeroSumTest {
 
         public Gene randomGene() {
 
-            SimpleGene gene = new SimpleGene(mRandom.nextInt(mGeneRange) - mGeneRange/20);
+            SimpleGene gene = new SimpleGene(mRandom.nextInt(mGeneRange) - mGeneRange/2);
             return gene;
         }
     }
