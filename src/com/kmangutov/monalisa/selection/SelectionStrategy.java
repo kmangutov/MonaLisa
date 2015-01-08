@@ -12,12 +12,5 @@ import java.util.TreeMap;
  */
 public abstract class SelectionStrategy {
 
-    protected FitnessEvaluator mEvaluator;
-
-    public SelectionStrategy(FitnessEvaluator eval) {
-
-        mEvaluator = eval;
-    }
-
     public abstract Pair<Chromosome, Chromosome> select(Population population);
 }

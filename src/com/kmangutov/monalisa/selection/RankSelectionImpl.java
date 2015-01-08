@@ -18,21 +18,16 @@ public class RankSelectionImpl extends SelectionStrategy {
 
     protected Random mRandom = new Random();
 
-    public RankSelectionImpl(FitnessEvaluator eval) {
-
-        super(eval);
-    }
-
     public Pair<Chromosome, Chromosome> select(Population population) {
 
-        TreeMultimap<Float, Chromosome> mapping = population.map(mEvaluator);
         Chromosome first = null;
         Chromosome second = null;
         int counter = 0;
 
-        for(Map.Entry<Float, Chromosome> entry : mapping.entries()) {
+        for(Map.Entry<Float, Chromosome> entry : population.entries()) {
 
-            if(mRandom.nextFloat() < selectionChance(counter, population.size()) || counter++ >= mapping.size() -2) {
+            if(mRandom.nextFloat() < selectionChance(counter, population.getRealSize())
+                    || counter++ >= population.getRealSize() -2) {
 
                 if(first == null)
                     first = entry.getValue();
@@ -48,6 +43,6 @@ public class RankSelectionImpl extends SelectionStrategy {
 
     public float selectionChance(int i, int total) {
 
-        return 0.3f;
+        return 0.4f;
     }
 }

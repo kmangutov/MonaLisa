@@ -23,6 +23,8 @@ public class RankSelectionImplTest {
     public void testRankSelection() {
 
         Population pop = new Population();
+        pop.setFitnessEvaluator(new ZeroSum());
+
         Chromosome current = new Chromosome();
         for(int i = 1; i < 20; i++) {
 
@@ -32,7 +34,7 @@ public class RankSelectionImplTest {
             current = new Chromosome();
         }
 
-        RankSelectionImpl selection = new RankSelectionImpl(new ZeroSum());
+        RankSelectionImpl selection = new RankSelectionImpl();
         HashMap<Integer, Integer> frequency = new HashMap<Integer, Integer>();
 
         for(int i = 0; i < 50; i++) {
@@ -43,7 +45,10 @@ public class RankSelectionImplTest {
             frequency.put(keyVal, frequency.containsKey(keyVal)?(frequency.get(keyVal)+1):1);
         }
 
-        assertTrue(frequency.get(1) > frequency.get(4));
+        int aFreq = frequency.containsKey(1)?frequency.get(1):0;
+        int bFreq = frequency.containsKey(5)?frequency.get(5):0;
+
+        assertTrue(aFreq > bFreq);
 
         for(Map.Entry<Integer, Integer> entry : frequency.entrySet()) {
             System.out.println(entry.getKey() + "\t:\t" + entry.getValue());

@@ -6,24 +6,34 @@ import com.kmangutov.monalisa.fitness.FitnessEvaluator;
 import com.kmangutov.monalisa.seed.ChromosomeFactory;
 import com.kmangutov.monalisa.seed.GeneFactory;
 
+import java.util.Map;
+import java.util.Set;
 import java.util.TreeMap;
 import java.util.Vector;
 
 /**
  * Created by kmangutov on 1/8/15.
  */
-public class Population extends Vector<Chromosome>
+public class Population
 {
     protected int mSize = 20;
-    //protected Vector<Chromosome> mIndividuals;
+    protected TreeMultimap<Float, Chromosome> mIndividuals;
+    protected FitnessEvaluator mFitnessEvaluator;
 
     public Population() {
 
+        mIndividuals = TreeMultimap.create();
     }
 
     public Population(int size) {
 
+        mIndividuals = TreeMultimap.create();
         mSize = size;
+    }
+
+    public void setFitnessEvaluator(FitnessEvaluator eval) {
+
+        mFitnessEvaluator = eval;
     }
 
     public void setSize(int size) {
@@ -33,20 +43,50 @@ public class Population extends Vector<Chromosome>
 
     public void seed(ChromosomeFactory chromosomeFactory) {
 
-        for(int i = 0; i < mSize; i++)
-            add(chromosomeFactory.randomChromosome());
+        for(int i = 0; i < mSize; i++) {
+
+            Chromosome rand = chromosomeFactory.randomChromosome();
+            add(rand);
+        }
     }
 
-    public TreeMultimap<Float, Chromosome> map(FitnessEvaluator eval) {
+    public void add(Chromosome chromosome) {
 
-        TreeMultimap<Float, Chromosome> mapping = TreeMultimap.create();
+        //TODO check for null fitnessevaluator
 
-        for(Chromosome c : this) {
+        float fitness = mFitnessEvaluator.score(chromosome);
+        mIndividuals.put(fitness, chromosome);
+    }
 
-            float fitness = eval.score(c);
-            mapping.put(fitness, c);
+    public Chromosome getBest() {
+
+        return mIndividuals.asMap().firstEntry().getValue().iterator().next();
+    }
+
+    public TreeMultimap<Float, Chromosome> getIndividuals() {
+
+        return mIndividuals;
+    }
+
+    public int getRealSize() {
+
+        return mIndividuals.size();
+    }
+
+    public Set<Map.Entry<Float, Chromosome>> entries() {
+
+        return mIndividuals.entries();
+    }
+
+    public String toString() {
+
+        String total = "";
+
+        for(Map.Entry<Float, Chromosome> s : mIndividuals.entries()) {
+
+            total += s.getKey() + "\t\t" + s.getValue() + "\n";
         }
 
-        return mapping;
+        return total;
     }
 }
