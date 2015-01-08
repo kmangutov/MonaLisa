@@ -6,11 +6,8 @@ import com.kmangutov.monalisa.fitness.FitnessEvaluator;
 import com.kmangutov.monalisa.mutation.MutationStrategy;
 import com.kmangutov.monalisa.population.Population;
 import com.kmangutov.monalisa.seed.ChromosomeFactory;
-import com.kmangutov.monalisa.seed.GeneFactory;
 import com.kmangutov.monalisa.selection.SelectionStrategy;
 import javafx.util.Pair;
-
-import java.util.TreeMap;
 
 /**
  * Created by kmangutov on 1/8/15.

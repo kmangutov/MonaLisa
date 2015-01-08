@@ -3,10 +3,10 @@ package com.kmangutov.monalisa.test;
 import com.kmangutov.monalisa.chromosome.Chromosome;
 import com.kmangutov.monalisa.chromosome.Gene;
 import com.kmangutov.monalisa.crossover.SingleLocusCrossoverImpl;
-import com.sun.tools.javac.jvm.Gen;
 import javafx.util.Pair;
 import org.junit.Before;
 import org.junit.Test;
+
 
 import java.util.HashMap;
 import java.util.HashSet;

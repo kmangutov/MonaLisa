@@ -1,6 +1,5 @@
 package com.kmangutov.monalisa.crossover;
 
-import com.kmangutov.monalisa.chromosome.Gene;
 import com.kmangutov.monalisa.chromosome.Chromosome;
 import javafx.util.Pair;
 

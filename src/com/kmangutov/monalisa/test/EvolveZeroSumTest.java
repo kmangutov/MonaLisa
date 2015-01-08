@@ -7,7 +7,6 @@ import com.kmangutov.monalisa.crossover.SingleLocusCrossoverImpl;
 import com.kmangutov.monalisa.engine.Engine;
 import com.kmangutov.monalisa.fitness.FitnessEvaluator;
 import com.kmangutov.monalisa.mutation.MutationStrategy;
-import com.kmangutov.monalisa.mutation.StandardMutationImpl;
 import com.kmangutov.monalisa.mutation.StandardMutationRandomImpl;
 import com.kmangutov.monalisa.seed.ChromosomeFactory;
 import com.kmangutov.monalisa.seed.GeneFactory;

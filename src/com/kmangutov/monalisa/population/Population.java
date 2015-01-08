@@ -4,12 +4,9 @@ import com.google.common.collect.TreeMultimap;
 import com.kmangutov.monalisa.chromosome.Chromosome;
 import com.kmangutov.monalisa.fitness.FitnessEvaluator;
 import com.kmangutov.monalisa.seed.ChromosomeFactory;
-import com.kmangutov.monalisa.seed.GeneFactory;
 
 import java.util.Map;
 import java.util.Set;
-import java.util.TreeMap;
-import java.util.Vector;
 
 /**
  * Created by kmangutov on 1/8/15.
