@@ -11,11 +11,11 @@ To use MonaLisa to solve a problem, take the following steps
 
 1. Define **Genes** that make up the solution to the problem
 2. Define a **GeneFactory** that produces random Genes
-3. Select a **ChromosomeFactory** that describes how to create **Chromosomes** from Genes
+3. Define a **ChromosomeFactory** that describes how to create **Chromosomes** from Genes
 4. Define a **FitnessEvaluator** to judge viability of Chromosomes
 5. Select a **SelectionStrategy** that describes how to select candidates for reproduction
 6. Select a **CrossoverStrategy** that breeds two Chromosomes to produce offspring
-7. Select a **MutationStategy** that describes how to perform mutation on Genes
+7. Select a **MutationStategy** that describes how to perform mutation on Chromosomes
 
 Now, you can easily iterate through generations with one function call.
 
