@@ -156,6 +156,12 @@ These solutions aren't perfect but have a high fitness.
 1. **StandardMutationImpl** - Mutates each **Gene** in **Chromosome** with given probability. Needs to be subclassed to describe how to mutate a Gene
 2. **StandardMutationRandomImpl** - Implementation of **StandardMutationImpl** that takes a **GeneFactory**. Defines mutation as replacement by new random **Gene**
 
+## Todo
+
+1. Implement parallelization 
+2. Add more strategies
+3. Add elitism
+
 ## References
 
 <a href="http://www.boente.eti.br/fuzzy/ebook-fuzzy-mitchell.pdf">Melanie Mitchell - An Introduction to Genetic Algorithms</a>
