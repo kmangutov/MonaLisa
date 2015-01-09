@@ -12,11 +12,124 @@ To use MonaLisa to solve a problem, take the following steps
 1. Define **Genes** that make up the solution to the problem
 2. Define a **GeneFactory** that produces random Genes
 3. Select a **ChromosomeFactory** that describes how to create **Chromosomes** from Genes
-4. Select a **SelectionStrategy** that describes how to select candidates for reproduction
-5. Select a **CrossoverStrategy** that breeds two Chromosomes to produce offspring
-6. Select a **MutationStategy** that describes how to perform mutation on Genes
+4. Define a **FitnessEvaluator** to judge viability of Chromosomes
+5. Select a **SelectionStrategy** that describes how to select candidates for reproduction
+6. Select a **CrossoverStrategy** that breeds two Chromosomes to produce offspring
+7. Select a **MutationStategy** that describes how to perform mutation on Genes
 
 Now, you can easily iterate through generations with one function call.
+
+## Example
+
+In this example we will be using MonaLisa to evolve an array of numbers that sum to 0 but have a product of 56. Our **Gene** will represent a single integer of this array.
+
+```Java
+public class SimpleGene implements Gene {
+
+    public int mNumber;
+
+    public SimpleGene(int number) {
+
+        this.mNumber = number;
+    }
+
+    public int express() {
+
+        return mNumber;
+    }
+
+    public String toString() {
+
+        return express() + "";
+    }
+}
+
+```
+
+We need to define a **GeneFactory** to produce **Genes**.
+
+```Java
+public class NumberGeneFactory implements GeneFactory {
+
+    protected final int mGeneRange = 60;
+    protected Random mRandom;
+
+    public NumberGeneFactory() {
+
+        mRandom = new Random();
+    }
+
+    public Gene randomGene() {
+
+        SimpleGene gene = new SimpleGene(mRandom.nextInt(mGeneRange) - mGeneRange/2);
+        return gene;
+    }
+}
+```
+
+Our fitness function will evaluate solutions for their viability. Here we score **Chromosomes** based on the extent to which they satisfy our initial problem.
+
+```Java
+public class ZeroSumFitnessEvaluator implements FitnessEvaluator {
+
+    private final int mDesiredProduct = 56;
+
+    public float score(Chromosome chromosome) {
+
+        int sum = 0;
+        int product = 1;
+
+        for(Gene g : chromosome) {
+            int expression = ((SimpleGene) g).express();
+            sum += expression;
+            product *= expression;
+        }
+
+        return Math.abs(sum) + Math.abs(mDesiredProduct - product);
+    }
+}
+```
+
+Finally, we can put everything together. We will be using the provided strategies for chromosome creation, selection, crossover, and mutation.
+
+```Java
+ NumberGeneFactory geneFactory = new NumberGeneFactory();
+ ChromosomeFactory chromosomeFactory = new StaticChromosomeFactoryImpl(geneFactory, mChromosomeSize);
+
+ FitnessEvaluator fitnessEvaluator = new ZeroSumFitnessEvaluator();
+ 
+ SelectionStrategy selectionStrategy = new RankSelectionImpl();
+ CrossoverStrategy crossoverStrategy = new SingleLocusCrossoverImpl();
+ MutationStrategy mutationStrategy = new StandardMutationRandomImpl(geneFactory);
+
+ Engine engine = new Engine();
+ engine.setChromosomeFactory(chromosomeFactory);
+ engine.setFitnessEvaluator(fitnessEvaluator);
+ engine.setSelectionStrategy(selectionStrategy);
+ engine.setCrossoverStrategy(crossoverStrategy);
+ engine.setMutationStrategy(mutationStrategy);
+
+ engine.initPopulation(mPopulationSize);
+```
+
+### Interesting Solutions
+
+Running the algorithm provides us with a number of interesting solutions.
+
+```
+[7, 1, 1, -1, -8]
+[8, -1, -7]
+[-7, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, -2, -2, -2]
+```
+
+Due to the nature of Genetic Algorithms, it is very simple to add arbitrary constraints that other algorithms could have trouble with. For example, we can easily look for solutions that don't contain the integer 1.
+
+```
+[-5, -4, 3]
+[-4, -2, 7]
+```
+
+These solutions aren't perfect but have a high fitness.
 
 ## Provided
 
