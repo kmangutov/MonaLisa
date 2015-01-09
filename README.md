@@ -110,6 +110,12 @@ Finally, we can put everything together. We will be using the provided strategie
  engine.setMutationStrategy(mutationStrategy);
 
  engine.initPopulation(mPopulationSize);
+ 
+ for(int i = 0; i < 1000; i++) {
+
+    System.out.println(engine.getBest());
+    engine.iterate();
+}
 ```
 
 ### Interesting Solutions
