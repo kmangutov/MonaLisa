@@ -3,6 +3,8 @@
 <img src="http://i.imgur.com/Jbvt5GL.png"
  alt="MonaLisa" title="MonaLisa" align="right" width="278" height="400"/>
 
+Genetic algorithms are good at exploring large and complex problem domains in an intelligent fashion. Applications of Genetic algorithms are wide and include the training of Neural Networks.
+
 MonaLisa is a Java Genetic Algorithm implementation with a focus on ease of use and extensibility.
 
 ### Usage
