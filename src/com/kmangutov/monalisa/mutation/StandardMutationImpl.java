@@ -10,7 +10,7 @@ import java.util.Random;
  */
 public abstract class StandardMutationImpl implements MutationStrategy {
 
-    protected float mMutationChance = 0.01f;
+    protected float mMutationChance = 0.05f;
     protected Random mRandom = new Random();
 
     public StandardMutationImpl() {

@@ -57,6 +57,7 @@ public class Population
 
     public Chromosome getBest() {
 
+        System.out.println("Best fitness: " + mIndividuals.asMap().firstKey());
         return mIndividuals.asMap().firstEntry().getValue().iterator().next();
     }
 

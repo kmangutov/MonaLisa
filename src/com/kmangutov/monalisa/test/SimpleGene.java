@@ -19,11 +19,6 @@ public class SimpleGene implements Gene {
         return mNumber;
     }
 
-    public boolean equals(SimpleGene other) {
-
-        return mNumber == other.express();
-    }
-
     public String toString() {
 
         return express() + "";

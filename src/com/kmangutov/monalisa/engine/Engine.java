@@ -97,9 +97,6 @@ public class Engine {
             newPopulation.add(b);
         }
 
-        System.out.println("----------- Iteration " + iteration);
-        System.out.println(mPopulation + "");
-
         mPopulation = newPopulation;
         iteration++;
 

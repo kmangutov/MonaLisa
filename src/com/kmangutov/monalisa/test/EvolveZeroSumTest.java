@@ -47,7 +47,7 @@ public class EvolveZeroSumTest {
 
         engine.initPopulation(mPopulationSize);
 
-        for(int i = 0; i < 40; i++) {
+        for(int i = 0; i < 1000; i++) {
 
             System.out.println(engine.getBest());
             engine.iterate();
@@ -56,8 +56,7 @@ public class EvolveZeroSumTest {
 
     class ZeroSumFitnessEvaluator implements FitnessEvaluator {
 
-        private final int mSizeTendency = 8;
-        private final int mSizePenaltyRatio = 5;
+        private final int mDesiredProduct = 56;
 
         public float score(Chromosome chromosome) {
 
@@ -65,9 +64,11 @@ public class EvolveZeroSumTest {
             for(Gene g : chromosome)
                 sum += ((SimpleGene) g).express();
 
-            int sizePenalty = Math.abs(mSizeTendency - chromosome.size()) * mSizePenaltyRatio;
+            int product = 1;
+            for(Gene g : chromosome)
+                product *= ((SimpleGene) g).express();
 
-            return Math.abs(sum) + sizePenalty;
+            return Math.abs(sum) + Math.abs(mDesiredProduct - product);
         }
     }
 
