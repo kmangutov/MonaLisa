@@ -5,7 +5,7 @@
 
 MonaLisa is a Java Genetic Algorithm implementation with a focus on ease of use and extensibility.
 
-## Usage
+### Usage
 
 To use MonaLisa to solve a problem, take the following steps
 
