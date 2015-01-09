@@ -168,6 +168,6 @@ These solutions aren't perfect but have a high fitness.
 
 <a href="http://www.doc.ic.ac.uk/~nd/surprise_96/journal/vol1/hmw/article1.html">Genetic Algorithms</a>
 
-<a href="http://www.ai-junkie.com/ga/intro/gat1.html">Genetic Algorithsm in Plain English</a>
+<a href="http://www.ai-junkie.com/ga/intro/gat1.html">Genetic Algorithms in Plain English</a>
 
 <a href="http://www.talkorigins.org/faqs/genalg/genalg.html">Genetic Algorithms and Evolutionary Computation</a>
