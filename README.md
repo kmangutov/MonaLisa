@@ -173,3 +173,5 @@ These solutions aren't perfect but have a high fitness.
 <a href="http://www.ai-junkie.com/ga/intro/gat1.html">Genetic Algorithms in Plain English</a>
 
 <a href="http://www.talkorigins.org/faqs/genalg/genalg.html">Genetic Algorithms and Evolutionary Computation</a>
+
+<a href="http://www.obitko.com/tutorials/genetic-algorithms/selection.php">Introduction to Genetic Algorithms - Selection</a>
